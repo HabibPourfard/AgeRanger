@@ -1,0 +1,50 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>{{::vm.mode}} Person</h2>
+        <div>
+            <form role="form" name="form" novalidate="novalidate" ng-submit="vm.save(form.$valid)">
+                <div class="form-group">
+                    <label for="firstName">First name:</label>
+                    <input type="text" class="form-control" id="firstName" ng-model="vm.person.firstName"
+                           name="firstName"
+                           required
+                           ng-minlength="2"
+                           maxlength="50">
+                    <div ng-messages="form.firstName.$error" role="alert" class="error" ng-if="form.firstName.$dirty || vm.submitted">
+                        <div ng-message="required">Enter first name.</div>
+                        <div ng-message="minlength">First name is too short</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last name:</label>
+                    <input type="text" class="form-control" id="lastName" ng-model="vm.person.lastName"       
+                           name="lastName"
+                           required
+                           ng-minlength="2"
+                           maxlength="50">
+                    <div ng-messages="form.lastName.$error" role="alert" class="error" ng-if="form.lastName.$dirty || vm.submitted">
+                        <div ng-message="required">Enter last name.</div>
+                        <div ng-message="minlength">Last name is too short</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" class="form-control" id="age" ng-model="vm.person.age" name="age" min="0">
+                    <div ng-messages="form.age.$error" role="alert" class="error" ng-if="form.age.$dirty || vm.submitted">
+                        <div ng-message="min">Should be a number</div>
+                    </div>
+                </div>
+                <p>
+                    <a class="btn btn-default" href="/#!/person">Back to list &raquo;</a>
+                    
+                    <button type="submit" class="btn btn-info">Save</button>
+                    <div ng-if="vm.error" ng-bind="vm.error" class="alert alert-danger"></div>
+                </p>
+
+            </form>
+        </div>
+
+    </div>
+</div>

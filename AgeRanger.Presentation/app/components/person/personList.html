@@ -1,0 +1,36 @@
+﻿
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>People</h2>
+        <div ng-if="vm.people.length">
+            <p>
+                Search: <input type="text" ng-model="vm.searchTerm">
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Age</th>
+                        <th>Age Group</th>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="person in vm.people | filter:{ fullName: vm.searchTerm }">
+                        <td ng-bind="person.firstName"></td>
+                        <td ng-bind="person.lastName"></td>
+                        <td ng-bind="person.age"></td>
+                        <td ng-bind="person.ageGroupName"></td>
+                        <td><a class="btn btn-sm btn-info" href="/#!/person/edit/{{person.id}}">Edit</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div ng-if="!vm.people.length">
+            The list is empty. Please add people to the list.
+        </div>
+        <p>
+            <a class="btn btn-default" href="/#!/person/add">Add a new person &raquo;</a>
+        </p>
+    </div>
+</div>
